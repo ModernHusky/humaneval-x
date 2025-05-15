@@ -1,8 +1,8 @@
-# CodeGeeX-HumanEval-X 代码评测工具(codebleu&pass@k)
+# CodeGeeX-HumanEval-X 代码评测工具
 
 ## 1. 项目介绍
 
-CodeGeeX-HumanEval-X 是一个专门为评估代码生成模型性能的工具，特别针对C++代码的生成质量进行评测。该工具采用功能正确性评估和CodeBLEU分数相结合的方式，全面衡量生成代码的质量。
+CodeGeeX-HumanEval-X 是一个专门为评估代码生成模型性能的工具，特别针对C++代码的生成质量进行评测。该工具采用功能正确性评估pass@k和代码质量评估CodeBLEU分数相结合的方式，全面衡量生成代码的质量。
 
 ### 主要功能
 
