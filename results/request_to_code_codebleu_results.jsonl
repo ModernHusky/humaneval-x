@@ -1,0 +1,61 @@
+{
+  "codebleu_score": {
+    "ngram_match": 0.15721917982514366,
+    "weighted_ngram_match": 0.19087493689418056,
+    "syntax_match": 0.4940239043824701,
+    "dataflow_match": 0.6343283582089553,
+    "code_bleu": 0.4471374094148975
+  },
+  "samples": [
+    {
+      "task_id": "Alice",
+      "generated": "long long computeFactorial(int number) {\n    long long result = 1;\n    if (number < 0) return -1;\n    for (int i = 1; i <= number; ++i) {\n        result *= i;\n    }\n    return result;\n}",
+      "reference": "int factorial(int n) {\n    if (n < 0) return -1;\n    if (n == 0 || n == 1) return 1;\n    return n * factorial(n - 1);\n}"
+    },
+    {
+      "task_id": "Bob",
+      "generated": "bool checkPalindrome(const string& str) {\n    string cleaned;\n    for (char c : str) cleaned += c;\n    for (size_t i = 0; i < cleaned.size() / 2; ++i) {\n        if (cleaned[i] != cleaned[cleaned.size() - 1 - i]) return false;\n    }\n    return true;\n}",
+      "reference": "bool isPalindrome(string s) {\n    int left = 0, right = s.length() - 1;\n    while (left < right) {\n        if (s[left++] != s[right--]) return false;\n    }\n    return true;\n}"
+    },
+    {
+      "task_id": "Charlie",
+      "generated": "int getMaxElement(int* array, int length) {\n    int largest = INT_MIN;\n    for (int i = 0; i < length; ++i) {\n        largest = max(largest, array[i]);\n    }\n    return largest;\n}",
+      "reference": "int findMax(int arr[], int size) {\n    int max = arr[0];\n    for (int i = 1; i < size; i++) {\n        if (arr[i] > max) max = arr[i];\n    }\n    return max;\n}"
+    },
+    {
+      "task_id": "David",
+      "generated": "void invertVector(vector<int>& numbers) {\n    for (size_t i = 0; i < numbers.size() / 2; ++i) {\n        int temp = numbers[i];\n        numbers[i] = numbers[numbers.size() - 1 - i];\n        numbers[numbers.size() - 1 - i] = temp;\n    }\n}",
+      "reference": "void reverseVector(vector<int>& vec) {\n    int left = 0, right = vec.size() - 1;\n    while (left < right) {\n        swap(vec[left++], vec[right--]);\n    }\n}"
+    },
+    {
+      "task_id": "Emma",
+      "generated": "int digitSum(int value) {\n    int total = 0;\n    value = abs(value);\n    do {\n        total += value % 10;\n        value /= 10;\n    } while (value > 0);\n    return total;\n}",
+      "reference": "int sumOfDigits(int num) {\n    int sum = 0;\n    while (num > 0) {\n        sum += num % 10;\n        num /= 10;\n    }\n    return sum;\n}"
+    },
+    {
+      "task_id": "Frank",
+      "generated": "bool isNumberPrime(int num) {\n    if (num < 2) return false;\n    for (int divisor = 2; divisor <= sqrt(num); ++divisor) {\n        if (num % divisor == 0) return false;\n    }\n    return true;\n}",
+      "reference": "bool isPrime(int n) {\n    if (n <= 1) return false;\n    for (int i = 2; i * i <= n; i++) {\n        if (n % i == 0) return false;\n    }\n    return true;\n}"
+    },
+    {
+      "task_id": "Grace",
+      "generated": "long long getFibonacci(int index) {\n    if (index < 0) return 0;\n    if (index <= 1) return index;\n    vector<long long> fib(index + 1);\n    fib[0] = 0; fib[1] = 1;\n    for (int i = 2; i <= index; ++i) {\n        fib[i] = fib[i - 1] + fib[i - 2];\n    }\n    return fib[index];\n}",
+      "reference": "int fibonacci(int n) {\n    if (n <= 1) return n;\n    int prev = 0, curr = 1;\n    for (int i = 2; i <= n; i++) {\n        int next = prev + curr;\n        prev = curr;\n        curr = next;\n    }\n    return curr;\n}"
+    },
+    {
+      "task_id": "Henry",
+      "generated": "int charFrequency(const string& text, char target) {\n    int occurrences = 0;\n    for (size_t i = 0; i < text.length(); ++i) {\n        if (text[i] == target) ++occurrences;\n    }\n    return occurrences;\n}",
+      "reference": "int countChar(string s, char c) {\n    int count = 0;\n    for (char ch : s) {\n        if (ch == c) count++;\n    }\n    return count;\n}"
+    },
+    {
+      "task_id": "Isabel",
+      "generated": "int findGCD(int x, int y) {\n    x = abs(x); y = abs(y);\n    if (y == 0) return x;\n    return findGCD(y, x % y);\n}",
+      "reference": "int gcd(int a, int b) {\n    while (b != 0) {\n        int temp = b;\n        b = a % b;\n        a = temp;\n    }\n    return a;\n}"
+    },
+    {
+      "task_id": "Jack",
+      "generated": "void selectionSort(int array[], int length) {\n    for (int i = 0; i < length - 1; ++i) {\n        int minIdx = i;\n        for (int j = i + 1; j < length; ++j) {\n            if (array[j] < array[minIdx]) minIdx = j;\n        }\n        if (minIdx != i) swap(array[i], array[minIdx]);\n    }\n}",
+      "reference": "void bubbleSort(int arr[], int size) {\n    for (int i = 0; i < size - 1; i++) {\n        for (int j = 0; j < size - i - 1; j++) {\n            if (arr[j] > arr[j + 1]) {\n                swap(arr[j], arr[j + 1]);\n            }\n        }\n    }\n}"
+    }
+  ]
+}
