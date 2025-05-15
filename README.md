@@ -1,4 +1,4 @@
-# CodeGeeX-HumanEval-X 代码评测工具
+# CodeGeeX-HumanEval-X 代码评测工具(codebleu&pass@k)
 
 ## 1. 项目介绍
 
