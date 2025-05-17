@@ -7,6 +7,7 @@ import random
 import subprocess
 import tempfile
 import shutil
+import json
 from typing import *
 import threading
 import _thread
@@ -122,6 +123,25 @@ def check_correctness(
                 
                 # 编译命令
                 compile_cmd = ["g++", "--std=c++11", "test.cpp"]
+                # 添加includes目录作为包含路径
+                current_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+                includes_path = os.path.join(current_path, "includes")
+                compile_cmd.extend(["-I", includes_path])
+                
+                # 读取库配置
+                lib_config_path = os.path.join(current_path, "includes", "lib_config.json")
+                if os.path.exists(lib_config_path):
+                    with open(lib_config_path, 'r') as f:
+                        lib_config = json.loads(f.read())
+                    
+                    # 添加库路径
+                    for lib_path in lib_config.get("lib_paths", []):
+                        compile_cmd.extend(["-L", lib_path])
+                    
+                    # 添加库
+                    for lib in lib_config.get("libs", []):
+                        compile_cmd.extend(["-l", lib])
+                
                 if platform.system() == 'Windows':
                     compile_cmd.append("-mconsole")
                 if "162" in task_id:
